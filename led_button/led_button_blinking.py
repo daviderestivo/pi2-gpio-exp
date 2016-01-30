@@ -20,7 +20,7 @@ def loop():
 	while True:
 		if GPIO.input(BtnPin) == GPIO.LOW: # Check whether the button is pressed or not.
 			print '...button pressed'
-			GPIO.output(LedPin, GPIO.LOW)  # Led Off
+			GPIO.output(LedPin, GPIO.HIGH)  # Led On
 		else:
 			print '...button released'
 			blink()
