@@ -6,7 +6,7 @@ An example of how to control a LED via a button. The LED is on. Pressing the but
 
 ## 1 - led_button/led_button_blinking.py
 
-An example of how to control a LED via a button. The LED is blinking. Pressing the button will stop it blinking, releasing it will start it blinking again.
+An example of how to control a LED via a button. The LED is blinking. Pressing the button will turn it on, releasing it will start the LED blinking again.
 
 
 ## Note
