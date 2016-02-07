@@ -22,6 +22,8 @@ So if for example we enter: 10100011 the output value will be:
     Qg | 0
     Qh | 1
 
+IMPORTANT: The clock is provided by the Raspberry Pi.
+
 So,if you're inputting 8 bits, the first bit ends up in Qh.
 
 **PIN 12 (RCLK)** is maintained LOW while the data is being written to the
