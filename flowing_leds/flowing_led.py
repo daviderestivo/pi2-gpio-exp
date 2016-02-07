@@ -25,37 +25,44 @@ pattern = [
 "00001000",
 "00010000",
 "00100000",
-"01000000"
-]
+"01000000" ]
+
+cleanup = "00000000"
 
 def setup():
 	GPIO.setmode(GPIO.BOARD)      # Numbers GPIOs by physical location
 	GPIO.setup(SER, GPIO.OUT)     # Set SER's   mode is output
-	GPIO.setup(RCLK, GPIO.IN)     # Set RCLK's mode is output
-	GPIO.setup(SRCLK, GPIO.IN)    # Set SRCLK's mode is input
+	GPIO.setup(RCLK, GPIO.OUT)    # Set RCLK's  mode is output
+	GPIO.setup(SRCLK, GPIO.OUT)   # Set SRCLK's mode is input
+	GPIO.output(SER, GPIO.LOW)
+	GPIO.output(RCLK, GPIO.LOW)
+	GPIO.output(SRCLK, GPIO.LOW)
 
 def writeBit(bit):
-	# Wait for the serial clock to go from LOW to HIGH
-	while GPIO.input(SRCLK) == GPIO.LOW:
-		pass
 	if int(bit) == 1:
 		GPIO.output(SER, GPIO.HIGH)
+		GPIO.output(SRCLK, GPIO.HIGH)
 	else:
 		GPIO.output(SER, GPIO.LOW)
+		GPIO.output(SRCLK, GPIO.HIGH)
+	GPIO.output(SRCLK, GPIO.LOW)
 
 def writeByte (byte):
 	for bit in byte:
 		writeBit(bit)
 	GPIO.output(RCLK, GPIO.HIGH)
+	GPIO.output(RCLK, GPIO.LOW)
 
 def loop():
 	while True:
 		for byte in pattern:
+			print byte
 			writeByte(byte)
-			t.sleep(0.2)
-
+			t.sleep(0.1)
 def destroy():
-	GPIO.cleanup()                     # Cleanup resource
+	# Cleanup resource
+	writeByte(cleanup)
+	GPIO.cleanup()
 
 # main()
 if __name__ == '__main__':
