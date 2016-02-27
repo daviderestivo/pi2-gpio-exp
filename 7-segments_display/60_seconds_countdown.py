@@ -33,6 +33,17 @@ def write_digit(num):
 	time.sleep(0.001)
 	GPIO.output(RCLK, GPIO.LOW)
 
+def cleanup_display():
+        for bit in range(0, 16):
+                GPIO.output(SDI, GPIO.LOW)
+                GPIO.output(SRCLK, GPIO.HIGH)
+                time.sleep(0.001)
+                GPIO.output(SRCLK, GPIO.LOW)
+        GPIO.output(RCLK, GPIO.HIGH)
+        time.sleep(0.001)
+        GPIO.output(RCLK, GPIO.LOW)
+
+
 def loop():
 	while True:
 		for i in range(countdown, -1, -1):
@@ -41,6 +52,7 @@ def loop():
 			time.sleep(1.0)
 
 def destroy():   # When program ending, the function is executed. 
+	cleanup_display()
 	GPIO.cleanup()
 
 if __name__ == '__main__': #Program starting from here 
