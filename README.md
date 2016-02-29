@@ -12,5 +12,9 @@ An example of how to control a LED via a button. The LED is blinking. Pressing t
 
 The Knight Rider pattern using the 74HC595.
 
+### 3 - 7-segments_display/60_seconds_countdown.py
+
+Two 7-segments displays driven by a couple of 74HC595 used for a countdown.
+
 #### Note
 All of the schematics have been done using [Fritzing](http://fritzing.org/home/).
