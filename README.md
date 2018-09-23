@@ -1,4 +1,7 @@
 # pi2-gpio-exp
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 Some experiments done on a Raspberry Pi 2 using the GPIO library.
 
 ### 0 - led_button/led_button.py
